@@ -1,11 +1,11 @@
 {
   "affected": {
-    "defaultBase": "remotes/origin/main"
+    "defaultBase": "remotes/origin/georchestra-datafeeder"
   },
   "npmScope": "geonetwork-ui",
   "tasksRunnerOptions": {
     "default": {
-      "runner": "nx-cloud",
+      "runner": "nx/tasks-runners/default",
       "options": {
         "cacheableOperations": [
           "build",

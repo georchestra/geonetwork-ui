@@ -18,7 +18,10 @@ module.exports = {
     router: (req) => decodeURIComponent(req._parsedUrl.query),
   },
   '/datafeeder': {
-    target: 'http://localhost:8181',
+    target: 'http://localhost:8080',
+    pathRewrite: {
+      '^/datafeeder/': '/import/',
+    },
     secure: true,
     logLevel: 'debug',
     changeOrigin: true,

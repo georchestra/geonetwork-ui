@@ -105,8 +105,8 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          "nx build datafeeder --base-href='/datafeeder/'",
-          "docker build --build-arg APP_NAME=datafeeder -f ./tools/docker/Dockerfile.apps . -t $(tools/print-docker-tag.sh datafeeder)"
+          "nx build datafeeder --base-href='/import/'",
+          "docker build . -t georchestra/datafeeder-frontend:latest"
         ],
         "parallel": false
       }
