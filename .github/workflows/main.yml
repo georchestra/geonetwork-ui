@@ -48,6 +48,7 @@ jobs:
         run: npm run build
 
   gh-pages:
+    if: github.repository == 'geonetwork/geonetwork-ui'
     runs-on: ubuntu-latest
     steps:
 
