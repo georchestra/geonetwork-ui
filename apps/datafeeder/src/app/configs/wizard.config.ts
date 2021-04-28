@@ -3,8 +3,8 @@ import { WizardFieldModel } from '@lib/editor'
 
 import SETTINGS from '../../settings'
 
-
-export const DEFAULT_CHIPS_ITEMS_URL = (q:string): string => SETTINGS.thesaurusUrl.replace('${q}', q)
+export const DEFAULT_CHIPS_ITEMS_URL = (q: string): string =>
+  SETTINGS.thesaurusUrl.replace('${q}', q)
 
 export const STORAGE_KEY = 'datafeeder-state'
 
