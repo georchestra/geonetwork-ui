@@ -4,7 +4,7 @@ env:
 on:
   push:
     branches:
-      - georchestra
+      - georchestra-datafeeder
 jobs:
   build:
     if: github.repository == 'georchestra/geonetwork-ui'
