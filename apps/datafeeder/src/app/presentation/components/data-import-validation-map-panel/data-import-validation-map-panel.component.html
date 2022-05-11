@@ -8,7 +8,17 @@
     <div
       *ngIf="showProperties"
       [style.background]="getSecondaryColor(0.75)"
-      class="z-10 absolute top-0 w-56 right-1/10 p-3 h-full max-w-full overflow-y-auto"
+      class="
+        z-10
+        absolute
+        top-0
+        w-56
+        right-1/10
+        p-3
+        h-full
+        max-w-full
+        overflow-y-auto
+      "
     >
       <div class="text-sm text-white" *ngFor="let property of getProperties()">
         <strong>{{ property[0] }}</strong
@@ -29,7 +39,15 @@
       </gn-ui-dropdown-selector>
       <span
         *ngIf="footerList.length === 0"
-        class="block uppercase tracking-wide text-gray-800 text-xs font-bold whitespace-no-wrap text-right"
+        class="
+          block
+          uppercase
+          tracking-wide
+          text-gray-800 text-xs
+          font-bold
+          whitespace-no-wrap
+          text-right
+        "
       >
         {{ footerLabel | translate }} {{ selectedValue | translate }}
       </span>
