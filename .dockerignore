@@ -1,3 +1,5 @@
 demo
 node_modules
 ssr
+.angular
+dist
