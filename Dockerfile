@@ -4,8 +4,9 @@ FROM node:14-alpine as build
 WORKDIR /app
 COPY package.json ./
 COPY package-lock.json ./
-RUN npm install
+RUN npm ci --ignore-scripts
 COPY . ./
+RUN npm run postinstall
 RUN npm run build datafeeder -- --base-href='/import/'
 
 # Runner
