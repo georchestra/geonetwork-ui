@@ -4,6 +4,8 @@ import { environment } from './environments/environment'
 const SETTING_API = `${environment.apiUrl}/config/frontend`
 
 class Settings {
+  headerHeight = '90px'
+  headerSrc = '/header/?active=import'
   encodings = [
     {
       label: 'UTF-8',

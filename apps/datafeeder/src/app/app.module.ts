@@ -37,6 +37,7 @@ import { SummarizePageComponent } from './presentation/pages/summarize-page/summ
 import { SummarizeIllustrationComponent } from './presentation/components/svg/summarize-illustration/summarize-illustration.component'
 import { SummarizeBackgroundComponent } from './presentation/components/svg/summarize-background/summarize-background.component'
 import { DATAFEEDER_STATE_KEY, reducer } from './store/datafeeder.reducer'
+import { UtilSharedModule } from '@geonetwork-ui/util/shared'
 
 export function apiConfigurationFactory() {
   return new Configuration({
@@ -74,6 +75,7 @@ export function apiConfigurationFactory() {
     UiWidgetsModule,
     HttpClientModule,
     UtilI18nModule,
+    UtilSharedModule,
     FeatureEditorModule,
     ApiModule.forRoot(apiConfigurationFactory),
     TranslateModule.forRoot(TRANSLATE_DEFAULT_CONFIG),

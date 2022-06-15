@@ -3,41 +3,41 @@ name: Build
 on:
   push:
     branches:
-    - georchestra-datafeeder
+      - georchestra-datafeeder
     tags:
-    - '*'
+      - '*'
 jobs:
   build:
     if: github.repository == 'georchestra/geonetwork-ui'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-    - name: 'Checking out'
-      uses: actions/checkout@v1
+      - name: 'Checking out'
+        uses: actions/checkout@v1
 
-    - name: Getting image tag
-      if: github.repository == 'georchestra/geonetwork-ui'
-      id: version
-      run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
+      - name: Getting image tag
+        if: github.repository == 'georchestra/geonetwork-ui'
+        id: version
+        run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
 
-    - name: 'Building docker image'
-      if: github.repository == 'georchestra/geonetwork-ui'
-      run: docker build -t georchestra/datafeeder-frontend:latest .
+      - name: 'Building docker image'
+        if: github.repository == 'georchestra/geonetwork-ui'
+        run: docker build -t georchestra/datafeeder-frontend:latest .
 
-    - name: 'Logging in to docker.io'
-      if: github.repository == 'georchestra/geonetwork-ui'
-      uses: azure/docker-login@v1
-      with:
-        username: '${{ secrets.DOCKER_HUB_USERNAME }}'
-        password: '${{ secrets.DOCKER_HUB_PASSWORD }}'
+      - name: 'Logging in to docker.io'
+        if: github.repository == 'georchestra/geonetwork-ui'
+        uses: azure/docker-login@v1
+        with:
+          username: '${{ secrets.DOCKER_HUB_USERNAME }}'
+          password: '${{ secrets.DOCKER_HUB_PASSWORD }}'
 
-    - name: 'Pushing the docker image onto docker.io'
-      if: github.ref == 'refs/heads/georchestra-datafeeder' && github.repository == 'georchestra/geonetwork-ui'
-      run: |
-        docker push georchestra/datafeeder-frontend:latest
+      - name: 'Pushing the docker image onto docker.io'
+        if: github.ref == 'refs/heads/georchestra-datafeeder' && github.repository == 'georchestra/geonetwork-ui'
+        run: |
+          docker push georchestra/datafeeder-frontend:latest
 
-    - name: "Pushing release to docker.io"
-      if: contains(github.ref, 'refs/tags/') && github.repository == 'georchestra/geonetwork-ui'
-      run: |
-        docker tag georchestra/datafeeder-frontend:latest georchestra/datafeeder-frontend:${{ steps.version.outputs.VERSION }}
-        docker push georchestra/datafeeder-frontend:${{ steps.version.outputs.VERSION }}
+      - name: 'Pushing release to docker.io'
+        if: contains(github.ref, 'refs/tags/') && github.repository == 'georchestra/geonetwork-ui'
+        run: |
+          docker tag georchestra/datafeeder-frontend:latest georchestra/datafeeder-frontend:${{ steps.version.outputs.VERSION }}
+          docker push georchestra/datafeeder-frontend:${{ steps.version.outputs.VERSION }}
