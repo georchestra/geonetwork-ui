@@ -11,10 +11,4 @@ else
   echo "[INFO] End copying custom scripts"
 fi
 
-if [[ -d "$DIR" ]]
-then
-  # No regex and verbose in this image
-  /bin/run-parts "$DIR"
-fi
-
-exec "$@"
+exec /docker-entrypoint.sh "$@"
