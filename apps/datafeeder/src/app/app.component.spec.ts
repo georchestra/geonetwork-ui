@@ -1,24 +1,28 @@
 import { TestBed } from '@angular/core/testing'
 import { RouterTestingModule } from '@angular/router/testing'
 import { AppComponent } from './app.component'
+import { UtilSharedModule } from '@geonetwork-ui/util/shared'
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, UtilSharedModule],
       declarations: [AppComponent],
     }).compileComponents()
   })
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent)
-    const app = fixture.componentInstance
-    expect(app).toBeTruthy()
-  })
-
-  it(`should have as title 'datafeeder'`, () => {
-    const fixture = TestBed.createComponent(AppComponent)
-    const app = fixture.componentInstance
-    expect(app.title).toEqual('datafeeder')
+  describe('', () => {
+    let fixture
+    let app
+    beforeEach(async () => {
+      fixture = TestBed.createComponent(AppComponent)
+      app = fixture.componentInstance
+    })
+    it('should create the app', () => {
+      expect(app).toBeTruthy()
+    })
+    it(`should have as title 'datafeeder'`, () => {
+      expect(app.title).toEqual('datafeeder')
+    })
   })
 })

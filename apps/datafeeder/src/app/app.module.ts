@@ -39,6 +39,7 @@ import { FeatureAuthModule } from '@geonetwork-ui/feature/auth'
 import { MatIconModule } from '@angular/material/icon'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { DatasetValidationCsvPageComponent } from './presentation/pages/dataset-validation-csv-page/dataset-validation-csv-page'
+import { UtilSharedModule } from '@geonetwork-ui/util/shared'
 
 export function apiConfigurationFactory() {
   return new Configuration({
@@ -78,6 +79,7 @@ export function apiConfigurationFactory() {
     HttpClientModule,
     MatIconModule,
     UtilI18nModule,
+    UtilSharedModule,
     FeatureEditorModule,
     BrowserAnimationsModule,
     ApiModule.forRoot(apiConfigurationFactory),
