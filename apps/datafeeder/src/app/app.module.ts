@@ -40,6 +40,7 @@ import { MatIconModule } from '@angular/material/icon'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { DatasetValidationCsvPageComponent } from './presentation/pages/dataset-validation-csv-page/dataset-validation-csv-page'
 import { UtilSharedModule } from '@geonetwork-ui/util/shared'
+import {EffectsModule} from "@ngrx/effects";
 
 export function apiConfigurationFactory() {
   return new Configuration({
@@ -88,6 +89,7 @@ export function apiConfigurationFactory() {
       [DATAFEEDER_STATE_KEY]: reducer,
     }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
+    EffectsModule.forRoot()
   ],
   providers: [importProvidersFrom(FeatureAuthModule)],
   bootstrap: [AppComponent],
