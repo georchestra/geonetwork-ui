@@ -69,7 +69,7 @@ if(ctx.resourceTitleObject != null && ctx.resourceTitleObject.default != null &&
 if(ctx.resourceAbstractObject != null && ctx.resourceAbstractObject.default != null && ctx.resourceAbstractObject.default != '') {
   ok++
 }
-if(ctx.contact != null && ctx.contact.length > 0 && ctx.contact[0].organisation != null && ctx.contact[0].organisation != '') {
+if(ctx.contact != null && ctx.contact.length > 0 && ((ctx.contact[0].organisation != null && ctx.contact[0].organisation != '') || (ctx.contact[0].organisationObject.default != null && ctx.contact[0].organisationObject.default != ''))) {
   ok++
 }
 if(ctx.contact != null && ctx.contact.length > 0 && ctx.contact[0].email != null && ctx.contact[0].email != '') {
