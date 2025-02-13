@@ -36,10 +36,19 @@ class Settings {
   ]
   thesaurusUrl = `/geonetwork/srv/api/registries/vocabularies/search?type=CONTAINS&thesaurus=external.theme.inspire-theme&rows=200&q=$\{q}&uri=**&lang=$\{lang}`
   maxFileUploadSize = '-1'
+  links = {
+    existing: [],
+    custom: [{ uri: '', title: { default: '', fr: ''}}]
+  }
   init() {
     return fetch(SETTING_API)
       .then((response) => response.json())
       .then((json) => {
+        if (!json.links){
+          json.links = { existing : ["geonetwork",
+              "openlayers",
+              "ogc-features"]}
+        }
         Object.assign(this, json)
       })
   }
