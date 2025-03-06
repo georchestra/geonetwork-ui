@@ -56,16 +56,15 @@ export class SuccessPublishPageComponent implements OnInit, OnDestroy {
         .pipe(take(1))
         .subscribe((job: JobStatusModel) => {
           const links = job.datasets[0]._links
-          const linksFromConfig = SETTINGS.links
-          // Existing links
-          linksFromConfig.existing?.forEach((link) => {
+          SETTINGS.links.forEach((link) => {
             if (link === ('geonetwork')) {
               this.gnLink = links.describedBy[1].href.replace(
                 '/eng/',
                 `/${LANG_2_TO_3_MAPPER[this.translateService.currentLang]}/`
               )
               this.linksToDisplay.push({uri: this.gnLink, label: this.translateService.instant('datafeeder.publishSuccess.geonetworkRecord')})
-            } else if (link === ('openlayers')) {
+            }
+            else if (link === ('openlayers')) {
               this.gsLink = links.preview?.href
               this.http
                 .get(this.gsLink, { observe: 'response', responseType: 'text' })
@@ -79,15 +78,14 @@ export class SuccessPublishPageComponent implements OnInit, OnDestroy {
                     this.linksToDisplay.push({uri: this.gsLink, label: this.translateService.instant('datafeeder.publishSuccess.mapViewer')})
                   }
                 })
-            } else if (link === ('ogc-features')) {
+            }
+            else if (link === ('ogc-features')) {
               this.ogcLink = links.hosts?.href
               if (this.ogcLink)
                 this.linksToDisplay.push({uri: this.ogcLink, label: this.translateService.instant('datafeeder.publishSuccess.ogcFeature')})
+            } else {
+              this.linksToDisplay.push({uri: this.replaceVars(link.uri, job.datasets[0]), label: link.title[this.translateService.currentLang] || link.title.default})
             }
-          })
-          //Custom links
-          linksFromConfig.custom?.forEach((link) => {
-            this.linksToDisplay.push({uri: this.replaceVars(link.uri, job.datasets[0]), label: link.title[this.translateService.currentLang] || link.title.default})
           })
         })
     )
