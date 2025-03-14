@@ -35,12 +35,11 @@ import { SummarizePageComponent } from './presentation/pages/summarize-page/summ
 import { SummarizeIllustrationComponent } from './presentation/components/svg/summarize-illustration/summarize-illustration.component'
 import { SummarizeBackgroundComponent } from './presentation/components/svg/summarize-background/summarize-background.component'
 import { DATAFEEDER_STATE_KEY, reducer } from './store/datafeeder.reducer'
-import { FeatureAuthModule } from '@geonetwork-ui/feature/auth'
 import { MatIconModule } from '@angular/material/icon'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { DatasetValidationCsvPageComponent } from './presentation/pages/dataset-validation-csv-page/dataset-validation-csv-page'
 import { UtilSharedModule } from '@geonetwork-ui/util/shared'
-import {EffectsModule} from "@ngrx/effects";
+import { EffectsModule } from '@ngrx/effects'
 
 export function apiConfigurationFactory() {
   return new Configuration({
@@ -89,9 +88,9 @@ export function apiConfigurationFactory() {
       [DATAFEEDER_STATE_KEY]: reducer,
     }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot()
+    EffectsModule.forRoot(),
   ],
-  providers: [importProvidersFrom(FeatureAuthModule)],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
