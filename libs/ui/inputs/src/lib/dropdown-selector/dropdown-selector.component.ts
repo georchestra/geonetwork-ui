@@ -62,7 +62,7 @@ export class DropdownSelectorComponent implements OnInit {
 
   get selectedChoice(): DropdownChoice {
     return (
-      this.choices.find((choice) => choice.value === this.selected) ??
+      this.choices.find((choice) => String(choice.value) === String(this.selected)) ??
       this.choices[0]
     )
   }
